@@ -1,8 +1,6 @@
 export type Review = {
   id: number;
-  bookId: number;
+  read: boolean;
   review: string;
   grade: number;
 };
-
-export type CreateReview = Omit<Review, "id">;

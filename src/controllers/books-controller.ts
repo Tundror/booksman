@@ -3,7 +3,7 @@ import httpStatus from "http-status";
 
 import { isIdValid } from "../utils/id-validator";
 import { CreateBook } from "../protocols/book";
-import { CreateReview } from "../protocols/review";
+import { Review } from "../protocols/review";
 
 import * as bookService from "./../services/book-service";
 
@@ -28,9 +28,9 @@ export async function createBook(req: Request, res: Response) {
 }
 
 export async function reviewBook(req: Request, res: Response) {
-  const review = req.body as CreateReview;
+  const review = req.body as Review;
 
-  if (!isIdValid(review.bookId)) return res.sendStatus(httpStatus.BAD_REQUEST);
+  if (!isIdValid(review.id)) return res.sendStatus(httpStatus.BAD_REQUEST);
 
   await bookService.reviewBook(review);
   res.sendStatus(httpStatus.OK);
